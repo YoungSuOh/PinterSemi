@@ -29,7 +29,7 @@
 				<div class="userprofiledomain">
 					<div class="userprofile" id="userprofile">
 						<c:if test="${not empty memDTO.userProfile }">
-							<img src="http://localhost:8080/Inbeomstagram/storage/${memDTO.userOriginalProfile }" />
+							<img src="https://kr.object.ncloudstorage.com/bitcamp-9th-bucket-147/storage/${memDTO.userOriginalProfile }" />
 						</c:if>
 					</div>
 					<div class="profilebutton">

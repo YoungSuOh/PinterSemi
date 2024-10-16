@@ -16,6 +16,7 @@ import com.board.bean.BoardDTO;
 import com.board.dao.BoardDAO;
 import com.member.bean.MemberDTO;
 import com.member.dao.MemberDAO;
+import com.member.ncp.service.ObjectStorageService;
 import com.member.service.MemberService;
 
 @Service
@@ -26,7 +27,10 @@ public class MemberServiceImpl implements MemberService {
 	private BoardDAO boardDAO;
 	@Autowired
 	private HttpSession session;
+	@Autowired
+	private ObjectStorageService objectStorageService;
 	
+	private String bucketName = "bitcamp-9th-bucket-147";
 	@Override
 	public boolean checkId(String id) {
 		MemberDTO memberDTO = memberDAO.isExistId(id);
@@ -55,12 +59,17 @@ public class MemberServiceImpl implements MemberService {
 		String filePath = session.getServletContext().getRealPath("WEB-INF/storage");
 		System.out.println("실제폴더 = " + filePath);
 		
+		MemberDTO dto = memberDAO.getMember(memberDTO.getId());
+		
 		String userOriginalProfile;
-		String userProfile;
+		String userProfile = dto.getUserProfile();
 		File file;
 		
-		MemberDTO dto = memberDAO.getMember(memberDTO.getId());
 		if(userProfileImg != null) {
+			//NCP 이미지 삭제
+			objectStorageService.deleteFile(bucketName, "storage/", userProfile);
+			//NCP 이미지 올리기
+			userProfile = objectStorageService.uploadFile(bucketName, "storage/", userProfileImg);
 			userOriginalProfile = userProfileImg.getOriginalFilename();
 			userProfile = userOriginalProfile;
 			userProfile = UUID.randomUUID().toString();

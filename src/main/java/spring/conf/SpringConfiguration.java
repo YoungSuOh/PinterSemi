@@ -72,7 +72,7 @@ public class SpringConfiguration {
 	
 	@Bean
 	@Scope("prototype")
-	public MemberDTO userDTO() {
+	public MemberDTO memberDTO() {
 		return new MemberDTO();
 	}
 	

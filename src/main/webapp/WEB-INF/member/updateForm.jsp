@@ -26,11 +26,12 @@
 					<a>사진</a>
 				</div>
 				<div class="userprofiledomain">
-					<div class="userprofile">
+					<div class="userprofile" id="userprofile">
 						
 					</div>
 					<div class="profilebutton">
-						<input type="submit" value="변경"/>
+						<input type="button" id="change" value="변경" />
+						<input type="file" name="img" id="profileUpdateBtn" style="display:none;"/>
 					</div>
 				</div>
 				

@@ -15,8 +15,6 @@ $('#updatepwd').focusout(function() {
 function change() {
 	document.getElementById("updateemail2").value = document.getElementById("updateemail3").value;
 }
-
-
 // 회원정보 수정
 $(document).ready(function() {
     $('#updatebutton').click(function(){
@@ -118,4 +116,25 @@ function checkPost() {
         }
     }).open();
 }
-
+//버튼 클릭시 input type=file 클릭효과
+$('#change').click(function(){
+	$('#profileUpdateBtn').trigger('click'); //강제 이벤트 발생
+});
+//이미지 미리보기
+$('#profileUpdateBtn').change(function(){
+	$('#userprofile').empty();
+	for(var i=0; i<this.files.length; i++){
+		readURL(this.files[i]);
+	}
+});
+//이미지 올릴시 div에 이미지 적용
+function readURL(file){
+	var reader = new FileReader();
+	var show;
+	reader.onload = function(e){
+		var img = document.createElement('img');
+        img.src = e.target.result;
+        $('#userprofile').append(img);
+	}
+	reader.readAsDataURL(file);
+}

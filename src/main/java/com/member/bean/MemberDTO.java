@@ -18,4 +18,5 @@ public class MemberDTO {
 	private String zipcode;
 	private String address;  // add1 + add2
 	private Date logtime;
+	private String userProfile; // 사용자 프로필사진
 }

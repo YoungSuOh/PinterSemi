@@ -11,3 +11,5 @@ CREATE TABLE Member (
     address VARCHAR(300),         -- 주소 (add1 + add2)
     logtime TIMESTAMP DEFAULT CURRENT_TIMESTAMP   -- 회원 가입 시간
 );
+--회원 프로필사진
+ALTER TABLE Member ADD userProfile VARCHAR(4000);

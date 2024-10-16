@@ -29,6 +29,7 @@ $('#updateemail3').on('click', function() {
 // 회원정보 수정
 $(document).ready(function() {
     $('#updatebutton').click(function(){
+		let formData = new FormData($('#updateForm')[0]);
         $('#updatenameDiv').html("");
         $('#updatepwdDiv').html("");
         $('#updateemailDiv').html("");
@@ -86,8 +87,11 @@ $(document).ready(function() {
         // 모든 조건이 통과하면 서버로 데이터 전송
         $.ajax({
             type: 'post',
+			enctype: 'multipart/form-data',
+			processData: false,
+			contentType: false,
             url: '/Inbeomstagram/member/update',
-            data: $('#updateForm').serialize(),
+            data: formData,
             success: function() {
                 alert('회원정보가 성공적으로 수정되었습니다.');
                 location.href = '/Inbeomstagram/';
@@ -126,10 +130,10 @@ function checkPost() {
 }
 //버튼 클릭시 input type=file 클릭효과
 $('#change').click(function(){
-	$('#profileUpdateBtn').trigger('click'); //강제 이벤트 발생
+	$('#userProfileImg').trigger('click'); //강제 이벤트 발생
 });
 //이미지 미리보기
-$('#profileUpdateBtn').change(function(){
+$('#userProfileImg').change(function(){
 	$('#userprofile').empty();
 	for(var i=0; i<this.files.length; i++){
 		readURL(this.files[i]);

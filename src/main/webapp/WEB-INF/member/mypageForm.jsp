@@ -13,7 +13,16 @@
 <form id="mypage">
 	<div class="mypage">
 		<div class="profile">
-			<input type="submit" value="H" class="submitprofile"/>
+			<c:choose>
+				<c:when  test="${not empty memDTO.userProfile }">
+					<a href="/Inbeomstagram/member/updateForm"><img src="http://localhost:8080/Inbeomstagram/storage/${memDTO.userOriginalProfile }" /></a>
+				</c:when>
+				<c:when test="${empty memDTO.userProfile }">
+					<input type="button" value="H" class="submitprofile" onclick="location.href='/Inbeomstagram/member/updateForm'"/>
+				</c:when>
+			</c:choose>
+			
+			
 		</div>
 		<div class="username">
 			${memDTO.name }

@@ -12,3 +12,5 @@ CREATE TABLE Member (
     admin ENUM('USER', 'ADMIN') NOT NULL DEFAULT 'USER',
     logtime TIMESTAMP DEFAULT CURRENT_TIMESTAMP   -- 회원 가입 시간
 );
+--회원 프로필사진
+ALTER TABLE Member ADD userProfile VARCHAR(4000);

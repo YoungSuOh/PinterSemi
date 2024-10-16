@@ -15,7 +15,9 @@
 		<div class="profile">
 			<c:choose>
 				<c:when  test="${not empty memDTO.userProfile }">
-					<a href="/Inbeomstagram/member/updateForm"><img src="https://kr.object.ncloudstorage.com/bitcamp-9th-bucket-147/storage/${memDTO.userOriginalProfile }" /></a>
+					<a href="/Inbeomstagram/member/updateForm" />
+						<img src="https://kr.object.ncloudstorage.com/bitcamp-9th-bucket-147/storage/${memDTO.userProfile }"  alt="${memDTO.userOriginalProfile }"/>
+					</a>
 				</c:when>
 				<c:when test="${empty memDTO.userProfile }">
 					<input type="button" value="H" class="submitprofile" onclick="location.href='/Inbeomstagram/member/updateForm'"/>

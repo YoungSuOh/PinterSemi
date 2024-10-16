@@ -62,22 +62,19 @@ public class MemberServiceImpl implements MemberService {
 		MemberDTO dto = memberDAO.getMember(memberDTO.getId());
 		
 		String userOriginalProfile;
-		String userProfile = dto.getUserProfile();
+		String userProfile;
 		File file;
 		
 		if(userProfileImg != null) {
+			userProfile = dto.getUserProfile();
 			//NCP 이미지 삭제
 			objectStorageService.deleteFile(bucketName, "storage/", userProfile);
 			//NCP 이미지 올리기
 			userProfile = objectStorageService.uploadFile(bucketName, "storage/", userProfileImg);
 			userOriginalProfile = userProfileImg.getOriginalFilename();
-			userProfile = userOriginalProfile;
-			userProfile = UUID.randomUUID().toString();
 			file = new File(filePath, userOriginalProfile);
 			
 			try {
-				if (userProfileImg.isEmpty()) {
-		        }
 				userProfileImg.transferTo(file);
 			} catch (IllegalStateException e) {
 				e.printStackTrace();

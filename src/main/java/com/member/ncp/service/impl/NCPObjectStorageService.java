@@ -34,12 +34,12 @@ public class NCPObjectStorageService implements ObjectStorageService {
 				.build();
 	}
 	@Override
-	public String uploadFile(String bucketName, String directoryPath, MultipartFile img) {
-		try(InputStream inputStream = img.getInputStream()){
+	public String uploadFile(String bucketName, String directoryPath, MultipartFile userProfileImg) {
+		try(InputStream inputStream = userProfileImg.getInputStream()){
 			String imageFileName = UUID.randomUUID().toString();
 			
 			ObjectMetadata objectMetadata = new ObjectMetadata();
-			objectMetadata.setContentType(img.getContentType());
+			objectMetadata.setContentType(userProfileImg.getContentType());
 			
 			PutObjectRequest putObjectRequest =
 					new PutObjectRequest(bucketName,
@@ -56,7 +56,7 @@ public class NCPObjectStorageService implements ObjectStorageService {
 		
 	}
 	@Override
-	public void deleteFile(String bucketName, String directoryPath, String imageFileName) {
-		s3.deleteObject(bucketName, directoryPath + imageFileName);
+	public void deleteFile(String bucketName, String directoryPath, String userProfile) {
+		s3.deleteObject(bucketName, directoryPath + userProfile);
 	}
 }

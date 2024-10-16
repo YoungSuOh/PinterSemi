@@ -4,8 +4,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface ObjectStorageService {
 
-	public String uploadFile(String bucketName, String string, MultipartFile img);
+	public String uploadFile(String bucketName, String string, MultipartFile userProfileImg);
 
-	public void deleteFile(String bucketName, String string, String imageFileName);
+	public void deleteFile(String bucketName, String string, String userProfile);
 
 }

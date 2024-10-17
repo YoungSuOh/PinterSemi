@@ -19,7 +19,7 @@ public class BoardController {
 	
 	@RequestMapping("/writeForm")
 	public String boardWriteForm() {
-		return "/board/writeForm";
+		return "/board/boardWriteForm";
 	}
 	
 	@RequestMapping("/write")

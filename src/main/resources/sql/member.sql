@@ -13,4 +13,5 @@ CREATE TABLE Member (
     logtime TIMESTAMP DEFAULT CURRENT_TIMESTAMP   -- 회원 가입 시간
 );
 --회원 프로필사진
-ALTER TABLE Member ADD userProfile VARCHAR(4000);
+ALTER TABLE Member ADD userProfile VARCHAR(4000); -- UUID
+ALTER TABLE Member ADD userOriginalProfile VARCHAR(4000); -- 이미지이름.

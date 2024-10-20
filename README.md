@@ -57,7 +57,7 @@
 - **프론트엔드**: HTML, CSS, JavaScript (jQuery), Bootstrap
 - **백엔드**: Java, Spring Framework, MyBatis
 - **DB**: Oracle
-- **CI/CD : NCP(MySQL, Object Storage), Docker, Jenkins
+- **CI/CD** : NCP(MySQL, Object Storage), Docker, Jenkins
 - **기타**: Git, JSP
 
 ## 기능 화면
